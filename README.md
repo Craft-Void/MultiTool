@@ -88,6 +88,8 @@ Alias: `/mt`
 
 ---
 
+[**GitHub**] - (https://modrinth.com/project/fxX0AFkT)
+
 ## Item YAML Structure
 
 ```yaml
@@ -134,7 +136,6 @@ multitool:
 - PlaceholderAPI
 - ExcellentEnchants (reflection-only; no compile dependency)
 
-[**GitHub**] - (https://modrinth.com/project/fxX0AFkT)
 ---
 
 ## Compatibility
