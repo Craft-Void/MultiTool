@@ -134,6 +134,7 @@ multitool:
 - PlaceholderAPI
 - ExcellentEnchants (reflection-only; no compile dependency)
 
+[**GitHub**] - (https://modrinth.com/project/fxX0AFkT)
 ---
 
 ## Compatibility
