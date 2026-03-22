@@ -88,7 +88,7 @@ Alias: `/mt`
 
 ---
 
-[**GitHub**] - (https://modrinth.com/project/fxX0AFkT)
+[**Modrinth**] - (https://modrinth.com/project/fxX0AFkT)
 
 ## Item YAML Structure
 
