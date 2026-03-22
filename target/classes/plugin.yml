@@ -1,0 +1,58 @@
+name: MultiTool
+version: '1.0.0'
+main: com.mrsilent.multitool.MultiToolPlugin
+
+# api-version: '1.21' means "minimum Paper 1.21".
+# Paper treats this as a minimum version check — the plugin will load on
+# any server running 1.21.x, covering all patch releases:
+#   1.21  1.21.1  1.21.2  1.21.3  1.21.4
+#   1.21.5  1.21.6  1.21.7  1.21.8  1.21.9
+#   1.21.10  1.21.11
+api-version: '1.21'
+
+description: Fully configurable multi-mode tool system. Supports Paper 1.21 – 1.21.11.
+authors: [ MrSilent ]
+website: ''
+
+softdepend:
+  - PlaceholderAPI
+  - ExcellentEnchants
+  - ItemsAdder
+  - Oraxen
+
+# NBT-API must be present on the server if custom-nbt entries are used in item YAMLs.
+# The plugin uses Bukkit PDC natively for all core operations and does not require
+# NBT-API at startup — it is only invoked when custom nbt: keys are defined in a tool YAML.
+
+commands:
+  multitool:
+    description: MultiTool management command.
+    usage: /multitool <give|list|reload|export|create>
+    aliases: [ mt ]
+    permission: multitool.admin
+
+permissions:
+  multitool.admin:
+    description: Access to all /multitool admin commands.
+    default: op
+  multitool.use:
+    description: Allows use of any multitool.
+    default: true
+  multitool.use.*:
+    description: Wildcard permission for all specific tool types.
+    default: true
+  multitool.reload:
+    description: Permission to reload the plugin.
+    default: op
+  multitool.give:
+    description: Permission to give multitools.
+    default: op
+  multitool.list:
+    description: Permission to list loaded multitools.
+    default: op
+  multitool.export:
+    description: Permission to export multitools.
+    default: op
+  multitool.create:
+    description: Permission to create template YAML files.
+    default: op

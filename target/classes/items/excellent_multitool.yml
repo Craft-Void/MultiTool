@@ -1,0 +1,259 @@
+# ============================================================
+#  excellent_multitool.yml
+#  A fully-featured example MultiTool with 5 modes,
+#  ExcellentEnchants, attributes, flags, hex colors & sounds.
+# ============================================================
+
+multitool:
+  id: "excellent_multitool"
+  display-name: "&#FFD700⚡ &6Excellent MultiTool &#FFD700⚡"
+  material: NETHERITE_PICKAXE
+  unbreakable: true
+
+  # Base lore shown on all modes
+  lore:
+    - "&#888888────────────────────"
+    - "&#FFD700 Excellent MultiTool"
+    - "&7 A legendary tool of many forms."
+    - "&#888888────────────────────"
+    - "&8 Owner&7: &e{player_name}"
+    - "&8 Mode&7:  &6{type}"
+    - "&#888888────────────────────"
+    - "&8 Sneak + Right-Click &7to switch."
+
+  # Base enchantments (vanilla) applied to all modes
+  enchants:
+    - "mending:1"
+    - "unbreaking:3"
+
+  # Base ExcellentEnchants applied to all modes
+  excellent-enchants:
+    - "blessing:1"
+
+  # Root-level flags applying to the whole tool
+  flags:
+    - "ONLY_SNEAK_SWITCH"
+    - "UNSTACKABLE"
+    - "NO_PLUGIN_GUI_BLOCK"
+
+  # Per-tool GUI settings (overrides global config.yml gui section)
+  gui:
+    rows: 3
+    title: "&#FFD700 Excellent MultiTool &8» &7Select Mode"
+    include-base-slot: false
+    open-sound: "BLOCK_AMETHYST_BLOCK_CHIME"
+    open-volume: 0.8
+    open-pitch: 1.0
+
+  # Default switch sound (can be overridden per-type)
+  switch-sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+
+  # ─────────────────────────────────────────────────
+  #  TYPES / MODES
+  # ─────────────────────────────────────────────────
+  types:
+
+    # ── MODE 1: Mining Pickaxe ──────────────────────
+    pickaxe:
+      name: "&#5BC8F5⛏ &bMining Mode"
+      material: NETHERITE_PICKAXE
+      slot: 10   # row 2, col 2
+
+      lore:
+        - "&#888888────────────────────"
+        - "&#5BC8F5 Mining Mode"
+        - "&7 Blazing fast mining with VeinMiner."
+        - "&#888888────────────────────"
+        - "&7 Fortune &e{type} &7active."
+
+      enchants:
+        - "efficiency:8"
+        - "fortune:3"
+        - "mending:1"
+        - "unbreaking:3"
+
+      excellent-enchants:
+        - "veinminer:4"
+        - "blast_mining:3"
+
+      attributes:
+        GENERIC_ATTACK_DAMAGE: 3.0
+        GENERIC_ATTACK_SPEED: 1.2
+        GENERIC_MOVEMENT_SPEED: 0.05
+
+      flags:
+        - "UNSTACKABLE"
+        - "HIDE_ATTRIBUTES"
+
+      nbt:
+        mode: "pickaxe"
+        veinminer_enabled: "true"
+
+      switch-title: "&#5BC8F5⛏ Mining Mode"
+      switch-subtitle: "&7VeinMiner + Blast Mining Active"
+      sound: "BLOCK_AMETHYST_BLOCK_RESONATE"
+
+    # ── MODE 2: Battle Sword ───────────────────────
+    sword:
+      name: "&#FF4444⚔ &cBattle Mode"
+      material: NETHERITE_SWORD
+      slot: 12   # row 2, col 4
+
+      lore:
+        - "&#888888────────────────────"
+        - "&#FF4444 Battle Mode"
+        - "&7 Devastate your enemies."
+        - "&#888888────────────────────"
+        - "&c Looting &7for extra drops."
+
+      enchants:
+        - "sharpness:7"
+        - "looting:3"
+        - "fire_aspect:2"
+        - "sweeping_edge:3"
+        - "mending:1"
+        - "unbreaking:3"
+
+      excellent-enchants:
+        - "bane_arthropods_plus:5"
+        - "critical_strike:3"
+        - "lifesteal:2"
+
+      attributes:
+        GENERIC_ATTACK_DAMAGE: 12.0
+        GENERIC_ATTACK_SPEED: 1.6
+        GENERIC_KNOCKBACK_RESISTANCE: 0.1
+
+      flags:
+        - "UNSTACKABLE"
+        - "HIDE_ATTRIBUTES"
+        - "NO_BREAK"
+
+      nbt:
+        mode: "sword"
+        battle_mode: "true"
+
+      switch-title: "&#FF4444⚔ Battle Mode"
+      switch-subtitle: "&7Sharpness VII + Critical Strike"
+      sound: "ENTITY_WITHER_SHOOT"
+
+    # ── MODE 3: Wood Axe ───────────────────────────
+    axe:
+      name: "&#A0522D🪓 &6Lumberjack Mode"
+      material: NETHERITE_AXE
+      slot: 14   # row 2, col 6
+
+      lore:
+        - "&#888888────────────────────"
+        - "&#A0522D Lumberjack Mode"
+        - "&7 Fell trees with ease."
+        - "&#888888────────────────────"
+        - "&6 Tree Feller &7enchant active."
+
+      enchants:
+        - "efficiency:8"
+        - "silk_touch:1"
+        - "mending:1"
+        - "unbreaking:3"
+
+      excellent-enchants:
+        - "tree_feller:3"
+        - "exp_hunter:2"
+
+      attributes:
+        GENERIC_ATTACK_DAMAGE: 8.0
+        GENERIC_ATTACK_SPEED: 0.9
+        GENERIC_MOVEMENT_SPEED: 0.03
+
+      flags:
+        - "UNSTACKABLE"
+        - "HIDE_ATTRIBUTES"
+
+      nbt:
+        mode: "axe"
+        tree_feller_enabled: "true"
+
+      switch-title: "&#A0522D🪓 Lumberjack Mode"
+      switch-subtitle: "&7Tree Feller + Efficiency VIII"
+      sound: "ENTITY_IRON_GOLEM_ATTACK"
+
+    # ── MODE 4: Farmer Hoe ─────────────────────────
+    hoe:
+      name: "&#77DD77🌾 &aFarmer Mode"
+      material: NETHERITE_HOE
+      slot: 16   # row 2, col 8
+
+      lore:
+        - "&#888888────────────────────"
+        - "&#77DD77 Farmer Mode"
+        - "&7 Harvest entire fields at once."
+        - "&#888888────────────────────"
+        - "&a Harvester &7auto-replants."
+
+      enchants:
+        - "efficiency:8"
+        - "fortune:3"
+        - "mending:1"
+        - "unbreaking:3"
+
+      excellent-enchants:
+        - "harvester:4"
+        - "replanting:3"
+
+      attributes:
+        GENERIC_ATTACK_DAMAGE: 1.0
+        GENERIC_ATTACK_SPEED: 3.0
+        GENERIC_MOVEMENT_SPEED: 0.04
+
+      flags:
+        - "UNSTACKABLE"
+        - "HIDE_ATTRIBUTES"
+
+      nbt:
+        mode: "hoe"
+        auto_replant: "true"
+
+      switch-title: "&#77DD77🌾 Farmer Mode"
+      switch-subtitle: "&7Harvester + Auto-Replant Active"
+      sound: "BLOCK_GRASS_PLACE"
+
+    # ── MODE 5: Shovel / Excavator ─────────────────
+    shovel:
+      name: "&#C2A048🪣 &eExcavator Mode"
+      material: NETHERITE_SHOVEL
+      slot: 22   # row 3, center
+
+      lore:
+        - "&#888888────────────────────"
+        - "&#C2A048 Excavator Mode"
+        - "&7 Move mountains of earth instantly."
+        - "&#888888────────────────────"
+        - "&e Excavator &7digs 3x3 tunnels."
+
+      enchants:
+        - "efficiency:8"
+        - "silk_touch:1"
+        - "mending:1"
+        - "unbreaking:3"
+
+      excellent-enchants:
+        - "excavator:4"
+        - "ore_scanner:2"
+
+      attributes:
+        GENERIC_ATTACK_DAMAGE: 4.0
+        GENERIC_ATTACK_SPEED: 1.0
+        GENERIC_MOVEMENT_SPEED: 0.02
+
+      flags:
+        - "UNSTACKABLE"
+        - "HIDE_ATTRIBUTES"
+        - "REQUIRE_PERMISSION"
+
+      nbt:
+        mode: "shovel"
+        excavator_size: "3"
+
+      switch-title: "&#C2A048🪣 Excavator Mode"
+      switch-subtitle: "&73x3 Digging + Ore Scanner"
+      sound: "BLOCK_GRAVEL_PLACE"

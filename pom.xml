@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mrsilent</groupId>
+    <artifactId>MultiTool</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <description>Fully configurable multi-mode tool plugin for Paper 1.21 – 1.21.11</description>
+
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.release>21</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+        </repository>
+        <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.io/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!--
+            Paper API — compiled against 1.21.4-R0.1-SNAPSHOT (the latest stable snapshot).
+
+            Paper uses a single rolling snapshot per minor version (1.21.x).
+            All 1.21.x releases share the same API surface, so compiling against
+            1.21.4-R0.1-SNAPSHOT produces a JAR that is binary-compatible at runtime
+            with every patch release in the 1.21 family:
+
+              1.21   1.21.1   1.21.2   1.21.3   1.21.4
+              1.21.5 1.21.6   1.21.7   1.21.8   1.21.9
+              1.21.10 1.21.11
+
+            plugin.yml api-version: '1.21' enforces the minimum and lets Paper
+            load the plugin on any of those server versions.
+        -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- PlaceholderAPI (soft-depend — optional at runtime) -->
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>2.11.6</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--
+            NBT-API — provided scope, NOT shaded.
+            Server admins must install the NBT-API jar alongside this plugin.
+            Core operations use Bukkit PDC; NBT-API is only needed for
+            advanced custom-nbt entries in item YAMLs.
+        -->
+        <dependency>
+            <groupId>de.tr7zw</groupId>
+            <artifactId>item-nbt-api</artifactId>
+            <version>2.13.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Guava — bundled with Paper, provided only -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>32.1.3-jre</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>MultiTool-${project.version}</finalName>
+        <plugins>
+
+            <!--
+                Java 21 compiler.
+                Using <release>21</release> instead of <source>/<target> so that
+                the JDK automatically sets the system-modules location and avoids
+                the "location of system modules is not set" warning.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <release>21</release>
+                    <encoding>UTF-8</encoding>
+                    <!-- Suppress annotation-processing noise from Paper's own processors -->
+                    <compilerArgs>
+                        <arg>-proc:none</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <!-- JAR manifest -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Built-By>MrSilent</Built-By>
+                            <Implementation-Title>MultiTool</Implementation-Title>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Minecraft-Versions>1.21, 1.21.1, 1.21.2, 1.21.3, 1.21.4, 1.21.5, 1.21.6, 1.21.7, 1.21.8, 1.21.9, 1.21.10, 1.21.11</Minecraft-Versions>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

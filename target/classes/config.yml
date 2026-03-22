@@ -1,0 +1,101 @@
+# ============================================================
+#  MultiTool - config.yml
+#  Plugin by MrSilent | Paper 1.21.x
+# ============================================================
+
+# Folder (inside plugins/MultiTool/) where item YAML definitions are stored.
+items-folder: "items"
+
+# Apply unbreakable globally to ALL multitools (can be overridden per-item YAML).
+global-unbreakable: true
+
+# ──────────────────────────────────────────────────────────────
+#  GUI Settings  (these are the GLOBAL defaults;
+#                individual items can override them under gui:)
+# ──────────────────────────────────────────────────────────────
+gui:
+  # How many rows in the selection inventory (1–6)
+  rows: 3
+  # GUI title – supports & color codes and &#RRGGBB hex
+  title: "&8[&6MultiTool&8] &7Select Mode"
+  # Whether to include the "base" item slot in the GUI
+  include-base-slot: true
+  # Sound played when the GUI is opened (Bukkit enum name OR minecraft key)
+  open-sound: "BLOCK_NOTE_BLOCK_PLING"
+  open-volume: 1.0
+  open-pitch: 1.0
+  # Cooldown in milliseconds between GUI opens (prevents spam)
+  cooldown-ms: 300
+
+# ──────────────────────────────────────────────────────────────
+#  Switch Settings  (shown when changing mode)
+# ──────────────────────────────────────────────────────────────
+switch:
+  # Default title/subtitle when switching (overridable per-type)
+  title: "&6Mode Switched"
+  subtitle: "&7Now using {type}"
+  # Title timing (in ticks: 20 ticks = 1 second)
+  fade-in: 5
+  stay: 25
+  fade-out: 5
+  # Default switch sound
+  sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+  volume: 1.0
+  pitch: 1.2
+
+# ──────────────────────────────────────────────────────────────
+#  PlaceholderAPI Integration
+# ──────────────────────────────────────────────────────────────
+papi:
+  # Enable PAPI placeholder parsing in display names, lore, titles, etc.
+  enable: true
+  # Safe mode: if PAPI throws an exception, silently ignore it
+  safe-mode: true
+
+# ──────────────────────────────────────────────────────────────
+#  ExcellentEnchants Integration
+# ──────────────────────────────────────────────────────────────
+excellentenchants:
+  # Enable ExcellentEnchants support (reflection-based, zero hard dependency)
+  enable: true
+  # If the enchant cannot be applied via API, append a lore line instead
+  lore-fallback: true
+
+# ──────────────────────────────────────────────────────────────
+#  Protection Settings
+#  IMPORTANT: MultiTool should NEVER interfere with other plugins.
+#  These flags are intentionally set to false by default.
+# ──────────────────────────────────────────────────────────────
+protection:
+  # If true, cancel ALL inventory interactions when holding a multitool
+  # (NOT recommended – leave false to avoid breaking shop/crate GUIs)
+  block-plugin-guis: false
+  # If true, prevent opening double chests while holding a multitool
+  # (NOT recommended – leave false)
+  block-double-chest: false
+
+# ──────────────────────────────────────────────────────────────
+#  Debug Mode
+# ──────────────────────────────────────────────────────────────
+debug: false
+
+# ──────────────────────────────────────────────────────────────
+#  Messages  (all support & colors and &#RRGGBB hex)
+# ──────────────────────────────────────────────────────────────
+messages:
+  prefix: "&8[&6MultiTool&8] "
+  reload-success: "&aPlugin reloaded successfully. Loaded &e{count} &atool(s)."
+  give-success: "&aGave &e{id} &ato &e{player}&a."
+  give-unknown-tool: "&cUnknown tool ID: &e{id}&c."
+  give-unknown-player: "&cPlayer not found: &e{player}&c."
+  list-header: "&6Loaded MultiTools &7({count}):"
+  list-entry: "  &8- &e{id} &7({types} types)"
+  no-permission: "&cYou don't have permission to do that."
+  no-types: "&cThis multitool has no types configured."
+  cooldown: "&cPlease wait before opening again."
+  export-success: "&aExported &e{id} &ato &e{file}&a."
+  create-success: "&aTemplate created: &eitems/{id}.yml"
+  create-exists: "&cA tool with ID &e{id} &calready exists."
+  require-permission: "&cYou need permission &emultitool.use.{id}.{type} &cto use this mode."
+  no-switch: "&cThis mode cannot be selected."
+  sneak-required: "&7Sneak + Right-Click to open mode selector."
